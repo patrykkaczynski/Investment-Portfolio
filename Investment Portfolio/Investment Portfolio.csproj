@@ -7,4 +7,8 @@
     <RootNamespace>Investment_Portfolio</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
