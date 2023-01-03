@@ -1,3 +1,4 @@
+using Investment_Portfolio.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 
@@ -7,13 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddApiVersioning(o =>
-{
-    o.DefaultApiVersion = new ApiVersion(1, 0);
-    o.AssumeDefaultVersionWhenUnspecified = true;
-    o.ReportApiVersions = true;
-    o.ApiVersionReader = new HeaderApiVersionReader("api-version");
-});
+builder.Services.ConfigureApiVersioning();
 
 var app = builder.Build();
 
