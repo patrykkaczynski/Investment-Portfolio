@@ -9,12 +9,11 @@ namespace Investment_Portfolio.Controllers.V1
     public class WalletController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<string> GetAll([FromBody])
+        public ActionResult<string> GetAll()
         {
             var elements = new List<string>() { "test", "test1", "test2" };
             return Ok(elements);
         }
-
 
     }
 }
