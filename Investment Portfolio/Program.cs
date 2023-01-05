@@ -1,16 +1,19 @@
 using Investment_Portfolio.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.ConfigureAuthenticationJwtBearer(builder.Configuration);
 
 builder.Services.ConfigureApiVersioning();
 
+builder.Services.ConfigureSwaggerGen();
 
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -18,7 +21,11 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+app.UseSwaggerDocumentation();
 
 app.MapControllers();
 
