@@ -1,4 +1,5 @@
 using Investment_Portfolio.Extensions;
+using Investment_Portfolio.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.ConfigureAuthenticationJwtBearer(builder.Configuration);
+
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.ConfigureApiVersioning();
 

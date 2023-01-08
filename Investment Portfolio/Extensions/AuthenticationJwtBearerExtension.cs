@@ -13,6 +13,7 @@ namespace Investment_Portfolio.Extensions
             var authenticationSettings = new AuthenticationSettings();
             configuration.Bind(nameof(authenticationSettings), authenticationSettings);
 
+            services.AddSingleton(authenticationSettings);
 
             services.AddAuthentication(options =>
             {
