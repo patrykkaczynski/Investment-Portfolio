@@ -23,7 +23,7 @@ namespace Investment_Portfolio.Services
                 FirstName = userRegistrationDto.FirstName,
                 LastName = userRegistrationDto.LastName,
                 Email = userRegistrationDto.Email,
-                DateOfBirth= userRegistrationDto.DateOfBirth,
+                DateOfBirth = userRegistrationDto.DateOfBirth,
                 Country = userRegistrationDto.Country,
             };
 
