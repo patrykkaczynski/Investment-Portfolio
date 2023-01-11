@@ -1,4 +1,5 @@
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Investment_Portfolio.Entities;
 using Investment_Portfolio.Extensions;
 using Investment_Portfolio.Models;
@@ -25,6 +26,8 @@ builder.Services.ConfigureApiVersioning();
 builder.Services.ConfigureSwaggerGen();
 
 builder.Services.AddControllers();
+
+builder.Services.ConfigureFluentValidation();
 
 var app = builder.Build();
 

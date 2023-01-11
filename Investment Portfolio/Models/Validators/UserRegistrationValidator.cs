@@ -12,7 +12,8 @@ namespace Investment_Portfolio.Models.Validators
 
             RuleFor(x => x.LastName).NotEmpty();
 
-            RuleFor(x => x.Email).EmailAddress()
+            RuleFor(x => x.Email).NotEmpty()
+                .EmailAddress()
                 .Custom((value, context) =>
                 {
                     bool isValid = applicationContext.Users.Any(e => e.Email == value);
@@ -23,16 +24,19 @@ namespace Investment_Portfolio.Models.Validators
                     }
                 });
 
-            RuleFor(x => x.DateOfBirth).
-                Must(DateOfBirthHelper.);
+            RuleFor(x => x.DateOfBirth).NotEmpty()
+                .Must(DateOfBirthHelper.IsDateInRightRange);
 
-            RuleFor(x => x.Password).MinimumLength(6)
-                .Must(PasswordHelper.HasSpecialSign)
-                .Must(PasswordHelper.HasNumber)
-                .Must(PasswordHelper.HasCapitalLetter)
-                .Must(PasswordHelper.HasSmallLetter);
+            RuleFor(x => x.Password).NotEmpty()
+                .MinimumLength(6)
+                .Must(PasswordHelper.HasNumber).WithMessage("1")
+                .Must(PasswordHelper.HasCapitalLetter).WithMessage("2")
+                .Must(PasswordHelper.HasSmallLetter).WithMessage("3")
+                .Must(PasswordHelper.HasSpecialCharacters).WithMessage("4");
 
-            RuleFor(x => x.ConfirmPassword).Equal(e => e.Password);
+            RuleFor(x => x.ConfirmPassword).NotEmpty().Equal(e => e.Password);
+
+            RuleFor(x => x.Country).NotEmpty();
 
 
         }

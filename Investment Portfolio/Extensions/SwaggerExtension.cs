@@ -1,4 +1,6 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
 
@@ -11,6 +13,7 @@ namespace Investment_Portfolio.Extensions
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(options =>
             {
+                
                 options.SwaggerDoc("investment_portfolio", new OpenApiInfo 
                 { 
                     Title = "Investment Portfolio", 
@@ -56,6 +59,9 @@ namespace Investment_Portfolio.Extensions
                 options.IncludeXmlComments(xmlPath);
 
             });
+
+            services.AddFluentValidationRulesToSwagger();
+
         }
 
         public static void UseSwaggerDocumentation(this IApplicationBuilder app)

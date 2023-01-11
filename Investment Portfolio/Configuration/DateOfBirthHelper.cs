@@ -2,14 +2,7 @@
 {
     public static class DateOfBirthHelper
     {
-        public static bool IsDateInRightRange(this DateTime date)
-        {
-            if(date> DateTime.Now.AddYears(-125) && date < DateTime.Now)
-            {
-
-            }
-
-
-        }
+        public static bool IsDateInRightRange(DateTime date) => date > DateTime.Now.AddYears(-125) && date < DateTime.Now;
+   
     }
 }

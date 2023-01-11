@@ -8,7 +8,7 @@ namespace Investment_Portfolio.Controllers.V1
     [ApiVersion("1.0")]
     [Route("api/wallet")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class WalletController : ControllerBase
     {
         /// <summary>
